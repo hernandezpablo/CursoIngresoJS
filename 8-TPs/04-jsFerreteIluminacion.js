@@ -10,5 +10,60 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
- 	
+    let cantidad;
+ 	let marca;
+    let precioFinal;
+    let precio = 35;
+    let impuesto = 0;
+
+    cantidad= parseInt(document.getElementById("txtIdCantidad").value);
+    marca = document.getElementById("marcaArgentina").value;
+
+   switch (marca){
+       case "ArgentinaLuz":
+           if (cantidad > 5){
+            precioFinal = precio * 0.5 * cantidad;
+           }else if (cantidad == 5){
+               precioFinal = precio *0.6 * cantidad;
+           } else if (cantidad == 4){
+               precioFinal = precio * 0.75 * cantidad;
+           } else if (cantidad ==3){
+               precioFinal = precio *0.85 * cantidad;
+           } else {
+               precioFinal = precio * cantidad;
+           } break;
+        case "FelipeLamparas":
+            if (cantidad > 5){
+                precioFinal= precio * 0.5 * cantidad;
+            } else if (cantidad == 5){
+                precioFinal= precio * 0.7 * cantidad;    
+            }
+             else if (cantidad == 4){
+                precioFinal= precio * 0.75 * cantidad;
+            } else if (cantidad == 3) {
+                precioFinal= precio *0.9 * cantidad;
+            } else {
+                precioFinal = precio * cantidad;
+            } break;
+        case "JeLuz": 
+        case "HazIluminacion":
+        case "Osram":
+                if(cantidad > 5){
+                    precioFinal= precio * 0.5 * cantidad;
+                } else if (cantidad == 5){
+                    precioFinal = precio * 0.7 * cantidad;
+                } else if (cantidad == 4){
+                    precioFinal= precio * 0.8 * cantidad;
+                } else if (cantidad == 3){
+                    precioFinal = precio * 0.95 * cantidad;
+                } else {
+                    precioFinal = precio * cantidad;
+                } break
+   }
+   if (precioFinal > 120){
+    impuesto = precioFinal * 0.10;
+    precioFinal = precioFinal + impuesto;
+   }
+   document.getElementById("txtIdprecioDescuento").value = precioFinal;
+   alert("Usted pago " + precioFinal + " , siendo " + impuesto + " el impuesto que pago.");
 }
